@@ -4,7 +4,7 @@ import jetbrains.kotlin.course.alias.util.Identifier
 import jetbrains.kotlin.course.alias.util.IdentifierFactory
 
 class TeamService {
-    private val identifierFactory = identifierFactor()
+    private val identifierFactory = IdentifierFactory()
 
     companion object {
         val teamsStorage: MutableMap<Identifier, Team> = mutableMapOf()
