@@ -1,9 +1,20 @@
 package jetbrains.kotlin.course.alias.team
 
-import org.springframework.stereotype.Service
+import jetbrains.kotlin.course.alias.util.Identifier
+import jetbrains.kotlin.course.alias.util.IdentifierFactory
 
-@Service
 class TeamService {
+    private val identifierFactory = identifierFactor()
 
-    fun generateTeamsForOneRound(teamsNumber: Int): List<Team> = TODO("Not implemented yet")
+    companion object {
+        val teamsStorage: MutableMap<Identifier, Team> = mutableMapOf()
+    }
+
+    fun generateTeamsForOneRound(teamCount: Int): List<Team> {
+        val teams = List(teamCount) {
+            val id = identifierFactory.uniqueIdentifier()
+            Team(id).also { team -> teamsStorage[id] = team }
+        }
+        return teams
+    }
 }
